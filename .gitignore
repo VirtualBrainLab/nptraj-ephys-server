@@ -102,3 +102,5 @@ dist
 
 # TernJS port file
 .tern-port
+
+pipeline/isi_amp_data/*
