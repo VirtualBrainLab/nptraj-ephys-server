@@ -1,0 +1,24 @@
+{
+  "name": "nptraj-ephys-server",
+  "version": "0.1.0",
+  "description": "Neuropixels trajectory planner electrophysiology atlas server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbirman/nptraj-ephys-server.git"
+  },
+  "author": "Daniel Birman (dbirman@uw.edu)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dbirman/nptraj-ephys-server/issues"
+  },
+  "homepage": "https://github.com/dbirman/nptraj-ephys-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1"
+  }
+}
