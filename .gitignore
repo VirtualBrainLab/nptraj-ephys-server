@@ -104,3 +104,4 @@ dist
 .tern-port
 
 pipeline/isi_amp_data/*
+pipeline/compression/*.bytes
