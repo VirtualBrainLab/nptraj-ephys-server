@@ -105,3 +105,5 @@ dist
 
 pipeline/isi_amp_data/*
 pipeline/compression/*.bytes
+*.bytes
+pipeline/.ipynb_checkpoints/*

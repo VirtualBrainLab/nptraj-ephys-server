@@ -9,39 +9,19 @@ from brainbox.io.one import SpikeSortingLoader
 from ibllib.atlas import AllenAtlas
 atlas = AllenAtlas(25)
 
-# Get all eid + probe combinations with timing info, wheel info, spikes, clusters, and channels.
-eid_info_map = np.load("C:\\proj\\IBL\\filter_eids\\brainwide_eid_info_map.npy", allow_pickle=True).item()
-
-good_eids = {}
-for eid in eid_info_map:
-  eid_info = eid_info_map[eid]
-
-  if eid_info["timing_info"] and eid_info["wheel_info"]:
-    good_probes = []
-    for probe in ['probe00', 'probe01']:
-      probe_info = eid_info[probe]
-      if probe_info["spikes"] and probe_info["clusters"] and probe_info["channels"]:
-        good_probes.append(probe)
-    if len(good_probes) > 0:
-      good_eids[eid] = good_probes
-      
-eids = list(good_eids.keys())
-
 # For testing
-# eids = [eids[0]]
-
+with open("bwm_eid.pkl",'rb') as f:
+    ins = pickle.load(f)
+    
 # Setup the log spacing we'll use to save the ISI distribution
 logbins = np.logspace(np.log10(0.001),np.log10(10),10)
 logbins = np.insert(logbins,0,0)
 
 # Now run through every *channel* in the data, saving the spike distribution and 
 
-
-uuid_2_index_fp = 'C:\\proj\\IBL\\cluster_pipelines\\data\\uuid_index.pkl'
-with open(uuid_2_index_fp, 'rb') as fp:
-  uuid_index = pickle.load(fp)
-
-for eid in eids:
+for insertion in ins:
+  eid = insertion[0]
+  probe = insertion[1]
   print("Starting: " + eid)
   # create a new pandas dataframe
   insertions = one.alyx.rest('insertions', 'list', session=eid)
@@ -97,4 +77,4 @@ for eid in eids:
           data.append(hist[bi])
         df.loc[i] = data
     # write the dataframe for this EID to disk
-    df.to_csv('C:\\proj\\IBL\\cluster_pipelines\\data\\isi_amp_data\\'+pid+'_isi_amp.csv')
+    df.to_csv('C:\\proj\\VBL\\nptraj-ephys-server\\pipeline\\isi_amp_data\\'+pid+'_isi_amp.csv')
