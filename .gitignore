@@ -107,3 +107,5 @@ pipeline/isi_amp_data/*
 pipeline/compression/*.bytes
 *.bytes
 pipeline/.ipynb_checkpoints/*
+pipeline/*.npy
+pipeline/*csv

@@ -23,6 +23,23 @@ const io = require("socket.io")(server, {
   } 
 });
 
+
+var ccfIndexes = []
+var data = {}
+var logbins = [0.001,  0.002782559, 0.007742637, 0.021544347, 0.059948425, 0.166810054, 0.464158883, 1.291549665, 3.593813664, 10]
+
+function startup() {
+  // Load each CSV file
+
+  // For each file that you load, copy the data into the data array
+  // compute the cumulative sum of the data entries
+  // keep track of the amplitude range and cluster count
+
+  // if two channels have the exact same ml/ap/dv coordinate, average their data,
+
+  // Save the index for this set of data in the ccf volume
+}
+
 io.on("connection", function (socket) {
   console.log("Client connected with ID: " + socket.id);
 
