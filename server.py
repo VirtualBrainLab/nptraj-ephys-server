@@ -13,7 +13,7 @@ print(data_indexes[100,100,100])
 df = pd.read_csv('pipeline/ea_hemisphere_data.csv')
 
 sio = socketio.Server()
-# app = socketio.WSGIApp(sio)
+app = socketio.WSGIApp(sio)
 
 @sio.event
 def connect(sid, environ):
